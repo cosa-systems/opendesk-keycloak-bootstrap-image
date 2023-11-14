@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2023 Bundesministerium des Innern und für Heimat, PG ZenDiS "Projektgruppe für Aufbau ZenDiS"
+# SPDX-License-Identifier: Apache-2.0
+---
+include:
+  project: "souvap/tooling/gitlab-config"
+  ref: "main"
+  file:
+    - "ci/common/lint.yml"
+    - "ci/container/container-build-sematic.yml"
+
+stages:
+  - ".pre"
+  - "lint"
+  - "build"
+  - ".post"
+...
