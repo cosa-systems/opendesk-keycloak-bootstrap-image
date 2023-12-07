@@ -11,7 +11,8 @@ RUN apk add \
     ansible \
     bash \
   && addgroup -S "app" \
-  && adduser -D -G "app" -h "/app" -s "/bin/bash" -u 1000 -S "app"
+  && adduser -D -G "app" -h "/app" -s "/bin/bash" -u 1000 -S "app" \
+  && rm -vrf /var/cache/apk/*
 
 USER app
 
