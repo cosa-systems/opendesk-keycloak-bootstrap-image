@@ -1,3 +1,11 @@
+## [1.0.1](https://gitlab.souvap-univention.de/souvap/tooling/images/opendesk-keycloak-bootstrap/compare/v1.0.0...v1.0.1) (2023-12-07)
+
+
+### Bug Fixes
+
+* **docker:** Remove apk cache ([50b4883](https://gitlab.souvap-univention.de/souvap/tooling/images/opendesk-keycloak-bootstrap/commit/50b4883691744d35b7e0afeee128fcd01b12e145))
+* **docker:** Remove apk cache ([7c27ff8](https://gitlab.souvap-univention.de/souvap/tooling/images/opendesk-keycloak-bootstrap/commit/7c27ff837fbc7b1d8c7bf9de60800e24984fd7bb))
+
 # 1.0.0 (2023-11-28)
 
 
