@@ -1,3 +1,10 @@
+## [1.0.2](https://gitlab.souvap-univention.de/souvap/tooling/images/opendesk-keycloak-bootstrap/compare/v1.0.1...v1.0.2) (2023-12-13)
+
+
+### Bug Fixes
+
+* **ci:** Update to new gitlab-config version ([b7abaa9](https://gitlab.souvap-univention.de/souvap/tooling/images/opendesk-keycloak-bootstrap/commit/b7abaa9b027dba12e38a507875f83216e8213951))
+
 ## [1.0.1](https://gitlab.souvap-univention.de/souvap/tooling/images/opendesk-keycloak-bootstrap/compare/v1.0.0...v1.0.1) (2023-12-07)
 
 
