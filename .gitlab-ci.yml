@@ -3,14 +3,16 @@
 ---
 include:
   project: "souvap/tooling/gitlab-config"
-  ref: "main"
+  ref: "v2.0.0"
   file:
     - "ci/common/lint.yml"
-    - "ci/container/container-build-sematic.yml"
+    - "ci/container/container-build-semantic.yml"
 
 stages:
   - ".pre"
   - "lint"
   - "build"
+  - "scan"
+  - "release"
   - ".post"
 ...
