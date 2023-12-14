@@ -17,7 +17,11 @@ with open('/app/values.yaml', 'r') as file:
 KEYCLOAK_ADMUSER = config['config']['keycloak']['adminUser']
 KEYCLOAK_ADMPASS = config['config']['keycloak']['adminPassword']
 KEYCLOAK_USER_REALM = config['config']['keycloak']['realm']
-KEYCLOAK_BASE_URL = 'https://'+config['global']['hosts']['keycloak']+'.'+config['global']['domain']
+if config['config']['keycloak']['intraCluster']['enabled']:
+    KEYCLOAK_BASE_URL = config['config']['keycloak']['intraCluster']['internalBaseUrl']
+else:
+    KEYCLOAK_BASE_URL = 'https://'+config['global']['hosts']['keycloak']+'.'+config['global']['domain']
+
 
 kc = Keycloak(
     adm_username=KEYCLOAK_ADMUSER,
