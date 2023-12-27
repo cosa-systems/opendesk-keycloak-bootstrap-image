@@ -1,3 +1,10 @@
+## [1.0.4](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.0.3...v1.0.4) (2023-12-27)
+
+
+### Bug Fixes
+
+* **ci:** Move to Open CoDE ([75bae33](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/75bae3373f9b93d7a742a0cb0cb7123aaa59ce58))
+
 ## [1.0.3](https://gitlab.souvap-univention.de/souvap/tooling/images/opendesk-keycloak-bootstrap/compare/v1.0.2...v1.0.3) (2023-12-14)
 
 
