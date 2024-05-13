@@ -79,7 +79,7 @@ class Keycloak:
 
     def __get_access_token(self):
         logging.info("Requesting access token")
-        res = requests.post(self.base_url+'/'+'/realms/master/protocol/openid-connect/token',
+        res = requests.post(self.base_url+'/realms/master/protocol/openid-connect/token',
                       data={
                         'client_id': 'admin-cli',
                         'username': self.adm_username,
@@ -87,7 +87,7 @@ class Keycloak:
                         'grant_type': 'password'
                       })
         if not res.status_code == 200:
-            sys.exit("bad response:"+res.content)
+            sys.exit(f"Unexpected response HTTP/{res.status_code}: {str(res.content)}")
         else:
           json_res = res.json()
           self.access_token = json_res["access_token"]
@@ -136,4 +136,3 @@ class Keycloak:
                     logging.info(f"Object update successful")
             else:
                 logging.info(f"No object relevant update(s) found, only {diff.keys()}")
-
