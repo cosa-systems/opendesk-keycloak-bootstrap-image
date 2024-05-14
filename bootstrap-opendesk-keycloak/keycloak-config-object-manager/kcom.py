@@ -8,7 +8,7 @@ import yaml
 import logging
 from lib.keycloak import Keycloak
 
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', level=logging.NOTSET)
+logging.basicConfig(format='%(asctime)s %(levelname)-5.5s: %(message)s', level=logging.NOTSET)
 logging.info("Initializing basic parameters")
 
 with open('/app/values.yaml', 'r') as file:
@@ -21,7 +21,6 @@ if config['config']['keycloak']['intraCluster']['enabled']:
     KEYCLOAK_BASE_URL = config['config']['keycloak']['intraCluster']['internalBaseUrl']
 else:
     KEYCLOAK_BASE_URL = 'https://'+config['global']['hosts']['keycloak']+'.'+config['global']['domain']
-
 
 kc = Keycloak(
     adm_username=KEYCLOAK_ADMUSER,
