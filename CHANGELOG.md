@@ -1,3 +1,11 @@
+## [1.0.5](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.0.4...v1.0.5) (2024-05-14)
+
+
+### Bug Fixes
+
+* **kcom.py:** Improve logging output ([5ac1932](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/5ac193273f5a3c03028d69d12ac347dcd9a39475))
+* Update Alpine to 3.19.1 and pin installed apk packages ([63d9f1a](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/63d9f1a6bd55d77723022177aa648af3f942b838))
+
 ## [1.0.4](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.0.3...v1.0.4) (2023-12-27)
 
 
