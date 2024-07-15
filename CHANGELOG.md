@@ -1,3 +1,10 @@
+# [1.1.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.0.5...v1.1.0) (2024-07-15)
+
+
+### Features
+
+* Remove diff handling for clients and client scopes, re-create them (all) when script is executed. ([d35db60](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/d35db60a03599168a96a06d9ab1c77403c89dc8c))
+
 ## [1.0.5](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.0.4...v1.0.5) (2024-05-14)
 
 
