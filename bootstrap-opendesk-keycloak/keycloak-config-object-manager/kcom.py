@@ -29,7 +29,10 @@ kc = Keycloak(
     base_url=KEYCLOAK_BASE_URL
 )
 
-for type, type_config in config['config']['custom'].items():
+# We enforce a certain order, as clientScopes should always be processed before clients.
+# fyi: clients get re-created on change, while clientScopes get updated.
+for type in ['clientScopes', 'clients']:
+    type_config = config['config']['custom'][type]
     logging.info(f"Processing {type}")
     if type_config:
         names = []
@@ -37,6 +40,6 @@ for type, type_config in config['config']['custom'].items():
               if 'name' not in object:
                   sys.exit(f"! 'name' attribute is mandatory for objects but missing: {object}")
               names.append(object['name'])
-              logging.info(f"Object name: {object['name']}")
-              kc.create_or_update_object(type=type, data=object)
+              logging.info(f"Working on {type}: {object['name']}")
+              kc.create_or_recreate_object(type=type, data=object)
         kc.reconcile_objecttype(type=type, names=names)

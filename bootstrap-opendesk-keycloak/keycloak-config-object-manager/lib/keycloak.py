@@ -6,7 +6,6 @@ import sys
 import json
 import logging
 import requests
-from deepdiff import DeepDiff
 
 KNOWN_OBJECTS = {
     'clientScopes': {
@@ -37,7 +36,6 @@ class Keycloak:
             sys.exit(f"! Attribute {attribute} not found for {type} in KNOWN_OBJECTS")
         else:
             return KNOWN_OBJECTS[type][attribute]
-
 
     def __get_subpath(self, type):
         return self.__get_knownobjects_details(type, 'path')
@@ -119,20 +117,24 @@ class Keycloak:
                 res = self.__api_call(subpath=objectpath, method='delete')
                 if res.status_code == 204:
                     logging.info(f"Object deleted")
+                else:
+                    logging.error(f"Error while deleting the object.")
+                    sys.exit(1)
 
-    def create_or_update_object(self, type, data):
+    def create_or_recreate_object(self, type, data):
         typepath = self.__get_subpath(type)
         res = self.__api_call(subpath=typepath, data=data)
         if (res.status_code == 409):
-            logging.info("Object already exists, querying for compare")
+            logging.info("Object already exists, re-creating it.")
             id = self.__get_object_id(type, data['name'])
             objectpath=typepath+'/'+id
-            res = self.__api_call(subpath=objectpath, method='get')
-            diff = DeepDiff(data, res.json(), ignore_order=True, group_by='name')
-            if "values_changed" in diff or "set_item_added" in diff:
-                logging.info(f"Found object updates: {diff['values_changed']} trying to update the relevant object")
-                res = self.__api_call(subpath=objectpath, data=data, method='put')
-                if res.status_code == 204:
-                    logging.info(f"Object update successful")
+            res = self.__api_call(subpath=objectpath, method='delete')
+            if res.status_code not in (200, 201, 204):
+                logging.error(f"Error while trying to delete the object {res}.")
+                sys.exit(1)
+            res = self.__api_call(subpath=self.__get_subpath(type), data=data)
+            if res.status_code in (200, 201, 204):
+                logging.info(f"{type} {data['name']} re-created.")
             else:
-                logging.info(f"No object relevant update(s) found, only {diff.keys()}")
+                logging.debug(f"Error while re-creating the object: {res}")
+                sys.exit(1)
