@@ -1,3 +1,10 @@
+# [1.2.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.1.0...v1.2.0) (2024-07-16)
+
+
+### Features
+
+* **kcom.py:** Support for custom oidc object definitions. ([d3b45ed](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/d3b45edb2f044b42d3eadc31d5a13ae5a527f7b2))
+
 # [1.1.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.0.5...v1.1.0) (2024-07-15)
 
 
