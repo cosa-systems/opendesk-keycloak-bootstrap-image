@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 # SPDX-FileCopyrightText: 2023 Bundesministerium des Innern und für Heimat, PG ZenDiS "Projektgruppe für Aufbau ZenDiS"
 # SPDX-License-Identifier: Apache-2.0
 
@@ -30,16 +29,19 @@ kc = Keycloak(
 )
 
 # We enforce a certain order, as clientScopes should always be processed before clients.
-# fyi: clients get re-created on change, while clientScopes get updated.
+# We already recreate these objects to ensure they are in line with the provided config.
 for type in ['clientScopes', 'clients']:
-    type_config = config['config']['custom'][type]
-    logging.info(f"Processing {type}")
-    if type_config:
-        names = []
-        for object in type_config:
-              if 'name' not in object:
-                  sys.exit(f"! 'name' attribute is mandatory for objects but missing: {object}")
-              names.append(object['name'])
-              logging.info(f"Working on {type}: {object['name']}")
-              kc.create_or_recreate_object(type=type, data=object)
-        kc.reconcile_objecttype(type=type, names=names)
+    keep_names = []
+    for section in [ 'opendesk', 'custom' ]:
+        if type in config['config'][section]:
+            type_config = config['config'][section][type]
+            logging.info(f"Processing {type} from {section}")
+            for object in type_config:
+                if 'name' not in object:
+                    sys.exit(f"! 'name' attribute is mandatory for objects but missing: {object}")
+                keep_names.append(object['name'])
+                logging.info(f"Working on {type}: {object['name']}")
+                kc.create_or_recreate_object(type=type, data=object)
+        else:
+            logging.debug(f"No {type} found in {section}.")
+        kc.reconcile_objecttype(type=type, keep_names=keep_names)

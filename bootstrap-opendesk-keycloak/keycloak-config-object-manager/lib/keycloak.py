@@ -103,10 +103,10 @@ class Keycloak:
         logging.warning(f"{type} object {name} not found")
         return None
 
-    def reconcile_objecttype(self, type, names = []):
+    def reconcile_objecttype(self, type, keep_names = []):
         typepath = self.__get_subpath(type)
         res = self.__api_call(subpath=typepath, method='get')
-        want_list = names + self.__get_defaultnames(type)
+        want_list = keep_names + self.__get_defaultnames(type)
         for object in res.json():
             if 'name' not in object:
                 logging.error(f"Object has no name defined, ignoring for reconciliation")
