@@ -1,3 +1,10 @@
+## [1.2.1](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.2.0...v1.2.1) (2024-08-07)
+
+
+### Bug Fixes
+
+* **reconciliation:** Allow managed object names to passed into the script. ([8bc9afd](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/8bc9afd01678f0c6ae1e482958c14ceb37cd3edb))
+
 # [1.2.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.1.0...v1.2.0) (2024-07-16)
 
 
