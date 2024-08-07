@@ -31,7 +31,7 @@ kc = Keycloak(
 # We enforce a certain order, as clientScopes should always be processed before clients.
 # We already recreate these objects to ensure they are in line with the provided config.
 for type in ['clientScopes', 'clients']:
-    keep_names = []
+    keep_names = config['config']['managed'][type]
     for section in [ 'opendesk', 'custom' ]:
         if type in config['config'][section]:
             type_config = config['config'][section][type]

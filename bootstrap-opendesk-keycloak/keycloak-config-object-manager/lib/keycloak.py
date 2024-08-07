@@ -9,12 +9,10 @@ import requests
 
 KNOWN_OBJECTS = {
     'clientScopes': {
-        'path': '/client-scopes',
-        'default_objects': [ 'acr','web-origins','email','profile','microprofile-jwt','role_list','offline_access','roles','address','phone' ]
+        'path': '/client-scopes'
     },
     'clients': {
-        'path': '/clients',
-        'default_objects': [ 'UMC', '${client_account}', '${client_account-console}', '${client_admin-cli}', '${client_broker}', '${client_realm-management}', '${client_security-admin-console}' ]
+        'path': '/clients'
     }
 }
 
@@ -39,9 +37,6 @@ class Keycloak:
 
     def __get_subpath(self, type):
         return self.__get_knownobjects_details(type, 'path')
-
-    def __get_defaultnames(self, type):
-        return self.__get_knownobjects_details(type, 'default_objects')
 
     def __api_call(self,
                 subpath=None,
@@ -106,13 +101,12 @@ class Keycloak:
     def reconcile_objecttype(self, type, keep_names = []):
         typepath = self.__get_subpath(type)
         res = self.__api_call(subpath=typepath, method='get')
-        want_list = keep_names + self.__get_defaultnames(type)
         for object in res.json():
             if 'name' not in object:
                 logging.error(f"Object has no name defined, ignoring for reconciliation")
                 continue
-            if object['name'] not in want_list:
-                logging.warning(f"Deleting object {object['name']} with id {object['id']} as it is not on wantlist")
+            if object['name'] not in keep_names:
+                logging.warning(f"Deleting object {object['name']} with id {object['id']} as it is not on keep_names list")
                 objectpath=typepath+'/'+object['id']
                 res = self.__api_call(subpath=objectpath, method='delete')
                 if res.status_code == 204:
