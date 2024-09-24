@@ -4,6 +4,8 @@
 
 import sys
 import json
+import time
+import socket
 import logging
 import requests
 
@@ -26,6 +28,25 @@ class Keycloak:
         self.access_token = None
         self.base_path = '/admin/realms/'+self.realm
         logging.info(f"Init for {self.base_url} and user {self.adm_username}")
+        self.__wait_for_host_resolve()
+
+    def __wait_for_host_resolve(self):
+        hostname = self.base_url.split('//')[1].split(':')[0]
+        success = False
+        retries = 30
+        sleep = 30
+        while not success and retries > 0:
+            try:
+                socket.gethostbyname(hostname)
+                success = True
+                logging.info(f"Successfully resolved {hostname}.")
+            except socket.error:
+                logging.warning(f"Hostname {hostname} does not resolve (yet), waiting {sleep} seconds with {retries} retries.")
+                time.sleep(sleep)
+                retries -= 1
+        if not success:
+            logging.error(f"Hostname {hostname} not reachable, exiting.")
+            sys.exit(1)
 
     def __get_knownobjects_details(self, type, attribute):
         if type not in KNOWN_OBJECTS:
