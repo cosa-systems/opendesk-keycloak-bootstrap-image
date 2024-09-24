@@ -29,6 +29,22 @@ class Keycloak:
         self.base_path = '/admin/realms/'+self.realm
         logging.info(f"Init for {self.base_url} and user {self.adm_username}")
         self.__wait_for_host_resolve()
+        self.__wait_for_realm()
+
+    def __wait_for_realm(self):
+        realm_url = f"{self.base_url}/realms/{self.realm}"
+        success = False
+        retries = 30
+        sleep = 30
+        while not success and retries > 0:
+            res = requests.get(realm_url)
+            if res.status_code == 200:
+                success = True
+                logging.info(f"Realm available at {realm_url}.")
+            else:
+                logging.warning(f"Realm not available (yet) at {realm_url}: {res.status_code}, waiting {sleep} seconds with {retries} retries.")
+                time.sleep(sleep)
+                retries -= 1
 
     def __wait_for_host_resolve(self):
         hostname = self.base_url.split('//')[1].split(':')[0]
@@ -44,9 +60,6 @@ class Keycloak:
                 logging.warning(f"Hostname {hostname} does not resolve (yet), waiting {sleep} seconds with {retries} retries.")
                 time.sleep(sleep)
                 retries -= 1
-        if not success:
-            logging.error(f"Hostname {hostname} not reachable, exiting.")
-            sys.exit(1)
 
     def __get_knownobjects_details(self, type, attribute):
         if type not in KNOWN_OBJECTS:
