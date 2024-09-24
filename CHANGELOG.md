@@ -1,3 +1,10 @@
+## [1.2.3](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.2.2...v1.2.3) (2024-09-24)
+
+
+### Bug Fixes
+
+* **keycloak.py:** Test if expected realm is available. ([cf1c562](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/cf1c5621c6a549c45079074d41843353faec5af5))
+
 ## [1.2.2](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.2.1...v1.2.2) (2024-09-24)
 
 
