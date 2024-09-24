@@ -1,3 +1,11 @@
+## [1.2.2](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.2.1...v1.2.2) (2024-09-24)
+
+
+### Bug Fixes
+
+* **docker:** Bump base image and Python3. ([69a7719](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/69a7719949dd1fd4471c797ca95f6efbf90e949c))
+* **keycloak.py:** Test if Keycloak hostname is resolvable with retries. ([7c227b1](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/7c227b1973d323671da950ccbd66382f5a289ad6))
+
 ## [1.2.1](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.2.0...v1.2.1) (2024-08-07)
 
 
