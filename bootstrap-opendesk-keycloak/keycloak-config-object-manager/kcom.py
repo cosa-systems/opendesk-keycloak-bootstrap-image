@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# SPDX-FileCopyrightText: 2024-2025 Zentrum für Digitale Souveränität der Öffentlichen Verwaltung (ZenDiS) GmbH
 # SPDX-FileCopyrightText: 2023 Bundesministerium des Innern und für Heimat, PG ZenDiS "Projektgruppe für Aufbau ZenDiS"
 # SPDX-License-Identifier: Apache-2.0
 
@@ -13,8 +14,11 @@ logging.info("Initializing basic parameters")
 with open('/app/values.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
-KEYCLOAK_ADMUSER = config['config']['keycloak']['adminUser']
-KEYCLOAK_ADMPASS = config['config']['keycloak']['adminPassword']
+with open('/app/admin.yaml', 'r') as file:
+    admin = yaml.safe_load(file)
+
+KEYCLOAK_ADMUSER = admin['username']
+KEYCLOAK_ADMPASS = admin['password']
 KEYCLOAK_USER_REALM = config['config']['keycloak']['realm']
 if config['config']['keycloak']['intraCluster']['enabled']:
     KEYCLOAK_BASE_URL = config['config']['keycloak']['intraCluster']['internalBaseUrl']
