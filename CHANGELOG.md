@@ -1,3 +1,10 @@
+# [1.3.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.2.3...v1.3.0) (2025-03-11)
+
+
+### Features
+
+* Reference dedicated secret for admin credentials ([d15a3de](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/d15a3deccb800c402a12456f2731365855fd1ba7))
+
 ## [1.2.3](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.2.2...v1.2.3) (2024-09-24)
 
 
