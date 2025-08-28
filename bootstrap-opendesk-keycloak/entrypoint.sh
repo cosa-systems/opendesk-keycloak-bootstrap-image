@@ -5,6 +5,9 @@
 # Exit on the first command returning with an RC >0
 set -e
 
+# Provisioning /app/values.yaml with secrets and write the result to /tmp/values.yaml for later usage
+python /app/provisionValuesYaml.py
+
 # Convention over configuration, this is the Ansible playbook that gets started when available.
 ANSIBLE_ENTRYPOINT=/app/ansible/main.yml
 

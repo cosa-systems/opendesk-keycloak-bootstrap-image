@@ -38,14 +38,22 @@ for type in ['clientScopes', 'clients']:
     keep_names = config['config']['managed'][type]
     for section in [ 'opendesk', 'custom' ]:
         if type in config['config'][section]:
-            type_config = config['config'][section][type]
             logging.info(f"Processing {type} from {section}")
-            for object in type_config:
-                if 'name' not in object:
-                    sys.exit(f"! 'name' attribute is mandatory for objects but missing: {object}")
-                keep_names.append(object['name'])
-                logging.info(f"Working on {type}: {object['name']}")
-                kc.create_or_recreate_object(type=type, data=object)
+            match type:
+                case 'clients':
+                    type_config = config['config'][section][type]['value']
+                    for key in type_config:
+                        keep_names.append(key)
+                        logging.info(f"Working on {type}: {key}")
+                        kc.create_or_recreate_object(type=type, data=type_config[key])
+                case 'clientScopes':
+                    type_config = config['config'][section][type]
+                    for object in type_config:
+                        if 'name' not in object:
+                            sys.exit(f"! 'name' attribute is mandatory for objects but missing: {object}")
+                        keep_names.append(object['name'])
+                        logging.info(f"Working on {type}: {object['name']}")
+                        kc.create_or_recreate_object(type=type, data=object)
         else:
             logging.debug(f"No {type} found in {section}.")
         kc.reconcile_objecttype(type=type, keep_names=keep_names)

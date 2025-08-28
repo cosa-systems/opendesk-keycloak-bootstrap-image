@@ -18,6 +18,13 @@ container environments for debugging purposes.
 
 The values from the Helm Chart have to be made available to the image in `/app/values.yaml`.
 
+### Python script: `provisionValuesYaml.py`
+
+A small script that injects or replaces `clientId` and `secret` values in the configuration of a Client object or the SSO Federation. Those values have to be provided in the `/app/secrets` folder with names according to the section they should be applied to:
+- `custom.yaml`
+- `opendesk.yaml`
+- `ssoFederation.yaml`
+
 ### Python script: `kcom.py` (Keycloak Object Manager)
 
 A simple script for the configuration, update and removal of certain Keycloak objects based on their yaml representation
