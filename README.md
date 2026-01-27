@@ -20,10 +20,7 @@ The values from the Helm Chart have to be made available to the image in `/app/v
 
 ### Python script: `provisionValuesYaml.py`
 
-A small script that injects or replaces `clientId` and `secret` values in the configuration of a Client object or the SSO Federation. Those values have to be provided in the `/app/secrets` folder with names according to the section they should be applied to:
-- `custom.yaml`
-- `opendesk.yaml`
-- `ssoFederation.yaml`
+A small script that injects or replaces confidential values in the configuration of a client object or the SSO Federation. Those values have to be provided in the `/app/secrets` folder as a file according to the pattern: `existingSecret.name-existingSecret.key` and supersede the `value` on the same level as the `existingSecret`.
 
 ### Python script: `kcom.py` (Keycloak Object Manager)
 
