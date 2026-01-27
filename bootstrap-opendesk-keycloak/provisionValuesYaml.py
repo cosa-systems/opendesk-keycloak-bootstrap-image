@@ -2,7 +2,6 @@
 # SPDX-FileCopyrightText: 2025 Zentrum für Digitale Souveränität der Öffentlichen Verwaltung (ZenDiS) GmbH
 # SPDX-License-Identifier: Apache-2.0
 
-import glob
 import os.path
 import re
 import sys
@@ -29,19 +28,17 @@ def start():
 
 def checkForSecretsAndUpdate(valuesAll):
 
-    neededChanges = []
-
     for section, dictionary in valuesAll.items():
         searchAndReplaceValueOrExistingSecret(section, dictionary)
 
 def searchAndReplaceValueOrExistingSecret(section, dictionary):
 
-    if type(dictionary) is not dict:
+    if not isinstance(dictionary, dict):
         return
 
     for subSection, subDictionary in dictionary.items():
         if secret := getValueOrExistingSecret(subDictionary):
-            dictionary[subSection] = secret;
+            dictionary[subSection] = secret
             break
         searchAndReplaceValueOrExistingSecret(subSection, subDictionary)
 
@@ -49,7 +46,7 @@ def searchAndReplaceValueOrExistingSecret(section, dictionary):
 
 def getValueOrExistingSecret(dictionary):
 
-    if type(dictionary) is not dict:
+    if not isinstance(dictionary, dict):
         return ''
 
     newSecretValue = ''
@@ -59,10 +56,6 @@ def getValueOrExistingSecret(dictionary):
 
         if subSection not in wantToFind:
             continue
-
-        # Ignore 'value' that is a dictionary
-        if 'value' == subSection and type(subDictionary) is dict:
-            return ''
 
         match subSection:
             case 'value' if not newSecretValue:
