@@ -1,3 +1,10 @@
+# [1.4.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.3.0...v1.4.0) (2026-03-09)
+
+
+### Features
+
+* **Dockerfile:** Update to alpie v3.23.3 ([b12ab0c](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/b12ab0ca284c8376cd09bc1b49f1d813ed9e3598))
+
 # [1.3.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.2.3...v1.3.0) (2025-03-11)
 
 
