@@ -1,3 +1,17 @@
+# [1.5.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.4.0...v1.5.0) (2026-04-21)
+
+
+### Bug Fixes
+
+* **image:** Adapt to new structure for clients ([ca6890a](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/ca6890a77e121c934326d275cf081e67796b2ac0))
+* **image:** Remove unnecessary secrets file ending and update README ([aaf2e78](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/aaf2e786dc9be6ec7c4295c4eab70a7396ca50db))
+
+
+### Features
+
+* **image:** Cleanup ([f8cd7b8](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/f8cd7b865d9a276b34f4cc1a0d82716d2f6c1a1d))
+* **image:** Provide the possibility to use existing secrets for secret values in clients and ssoFederation ([2e3a19a](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/commit/2e3a19abca315a848ce5739efa94e5b3da13a84b))
+
 # [1.4.0](https://gitlab.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-keycloak-bootstrap/compare/v1.3.0...v1.4.0) (2026-03-09)
 
 
