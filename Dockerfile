@@ -7,7 +7,7 @@ FROM docker.io/alpine:3.23.3
 WORKDIR /app
 
 RUN apk add --no-cache \
-    python3=3.12.12-r0 \
+    python3=3.12.13-r0 \
     py3-pip=25.1.1-r1 \
     py3-jmespath=1.0.1-r4 \
     py3-requests=2.32.5-r0 \
