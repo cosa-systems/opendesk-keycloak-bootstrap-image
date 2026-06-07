@@ -10,7 +10,7 @@ RUN apk add --no-cache \
     python3=3.12.13-r0 \
     py3-pip=25.1.1-r1 \
     py3-jmespath=1.0.1-r4 \
-    py3-requests=2.32.5-r0 \
+    py3-requests=2.33.1-r0 \
     ansible=13.0.0-r0 \
     bash=5.3.3-r1 \
   && addgroup -S "app" \
