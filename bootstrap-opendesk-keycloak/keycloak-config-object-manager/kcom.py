@@ -11,7 +11,11 @@ from lib.keycloak import Keycloak
 logging.basicConfig(format='%(asctime)s %(levelname)-5.5s: %(message)s', level=logging.NOTSET)
 logging.info("Initializing basic parameters")
 
-with open('/app/values.yaml', 'r') as file:
+# Read the secret-resolved values written by provisionValuesYaml.py (/tmp/values.yaml),
+# not the raw mounted /app/values.yaml — otherwise unresolved `existingSecret` blocks are
+# sent to Keycloak verbatim (HTTP 400 on client create). entrypoint.sh runs
+# provisionValuesYaml.py before this, so /tmp/values.yaml always exists here.
+with open('/tmp/values.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
 with open('/app/admin.yaml', 'r') as file:
