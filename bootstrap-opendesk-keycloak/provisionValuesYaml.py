@@ -85,6 +85,6 @@ def sanitisedName(dictionary):
 
     sanitisedNameAndKey = re.sub(r'\W+', '-', nameAndKey)
 
-    return './app/secrets/' + sanitisedNameAndKey
+    return '/app/secrets/' + sanitisedNameAndKey
 
 start()
